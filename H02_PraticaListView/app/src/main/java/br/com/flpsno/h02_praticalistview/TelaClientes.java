@@ -38,7 +38,7 @@ public class TelaClientes extends AppCompatActivity {
                 R.id.celulaclientes_tv_telefone, R.id.celulaclientes_tv_estado};
         adapter_clientes = new SimpleAdapter(
                 context,
-                gerarClientes(100),
+                gerarClientes(),
                 R.layout.celulaclientes,
                 De,
                 Para
@@ -46,16 +46,16 @@ public class TelaClientes extends AppCompatActivity {
         lv_clientes.setAdapter(adapter_clientes);
     }
 
-    private ArrayList<HMAux> gerarClientes(int quantidade) {
+    private ArrayList<HMAux> gerarClientes() {
         ArrayList<HMAux> dados = new ArrayList<>();
         //
-        for (int i = 1; i <= quantidade; i++) {
+        for (int i = 0; i < nomes.length; i++) {
             HMAux item = new HMAux();
-            item.put(HMAux.ID, String.valueOf(i));
-            item.put(HMAux.TEXTO_01, "Nome do Cliente - " + String.valueOf(i));
-            item.put(HMAux.TEXTO_02, "clientes" + String.valueOf(i) + "@gmail.com");
-            item.put(HMAux.TEXTO_03, "11 1234-4568");
-            item.put(HMAux.TEXTO_04, "SP");
+            item.put(HMAux.ID, String.valueOf(i + 1));
+            item.put(HMAux.TEXTO_01, nomes[i]);
+            item.put(HMAux.TEXTO_02, emails[i]);
+            item.put(HMAux.TEXTO_03, telefones[i]);
+            item.put(HMAux.TEXTO_04, estados[i]);
             dados.add(item);
         }
         //
@@ -65,6 +65,29 @@ public class TelaClientes extends AppCompatActivity {
     private void inicializarAcao() {
 
     }
+
+    String nomes[] = {
+            "Barbara", "Liliane Ferreira de Oliveira", "Raquel Amaral", "Luciana Sadalla",
+            "Marcela Resende Oliveira", "Monique class Almeida Vieira", "Patricia Gouvêa",
+            "Cristiane Correia Cavalcante", "PAULA CAVIGLIA SCHADLICH", "Renata Ferreira Salvany",
+    };
+
+    String emails[] = {
+            "babi_mota_souza@hotmail.com", "lilianellk@hotmail.com", "rakel_rocha@yahoo.com.br",
+            "lucianafranklin@yahoo.com.br", "marcelaresende@gmail.com", "moniqueclass03@gmail.com",
+            "plg.duarte@hotmail.com", "rocris2005@ig.com.br", "paulacaviglia@hotmail.com",
+            "rena_luiza@hotmail.com",
+    };
+
+    String estados[] = {
+            "RJ", "RJ", "AC", "SP", "RJ", "RJ", "SP", "SP", "SP", "RJ",
+    };
+
+    String telefones[] = {
+            "39043608", "(24) 99858-0470", "", "50554839", "81916000", "(21) 99409-0573",
+            "38448141", "56623638", "(11) 98122-1950",
+            "",
+    };
 
     @Override
     public void onBackPressed() {

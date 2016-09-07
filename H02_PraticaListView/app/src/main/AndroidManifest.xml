@@ -17,7 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TelaClientes" />
+        <activity
+            android:name=".TelaClientes"
+            android:screenOrientation="portrait" />
         <activity android:name=".TelaItens" />
         <activity android:name=".TelaPedidos"></activity>
     </application>
