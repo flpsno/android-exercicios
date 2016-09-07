@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="bt_clientes">#59d23a</color>
+    <color name="bt_itens">#59d23a</color>
+    <color name="bt_pedidos">#59d23a</color>
+
 </resources>
