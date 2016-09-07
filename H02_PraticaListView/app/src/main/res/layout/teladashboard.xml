@@ -32,7 +32,7 @@
             android:layout_height="150dp"
             android:background="@drawable/buttons"
             android:layout_weight="1"
-            android:text="Itens" />
+            android:text="Produtos" />
 
     </LinearLayout>
 

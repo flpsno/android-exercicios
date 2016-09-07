@@ -20,7 +20,9 @@
         <activity
             android:name=".TelaClientes"
             android:screenOrientation="portrait" />
-        <activity android:name=".TelaItens" />
+        <activity
+            android:name=".TelaProdutos"
+            android:screenOrientation="portrait" />
         <activity android:name=".TelaPedidos"></activity>
     </application>
 

@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(telaclientes);
                 break;
             case R.id.teladashboard_bt_itens:
-                Intent telaitens = new Intent(this, TelaItens.class);
+                Intent telaitens = new Intent(this, TelaProdutos.class);
                 startActivity(telaitens);
                 break;
             case R.id.teladashboard_bt_pedidos:
