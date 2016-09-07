@@ -35,7 +35,7 @@ public class TelaProdutos extends AppCompatActivity {
         //
         String[] De = {HMAux.TEXTO_01, HMAux.TEXTO_02, HMAux.TEXTO_03, HMAux.TEXTO_04};
         int[] Para = {R.id.celulaprodutos_iv_produto, R.id.celulaprodutos_tv_nome_produto, R.id.celulaprodutos_tv_qtd_min,
-            R.id.celulaprodutos_tv_preco};
+                R.id.celulaprodutos_tv_preco};
         adapter_produtos = new SimpleAdapter(
                 context,
                 gerarProdutos(),
@@ -52,7 +52,7 @@ public class TelaProdutos extends AppCompatActivity {
         //
         for (int i = 0; i < fotos.length; i++) {
             HMAux item = new HMAux();
-            item.put(HMAux.ID, String.valueOf(i+1));
+            item.put(HMAux.ID, String.valueOf(i + 1));
             item.put(HMAux.TEXTO_01, String.valueOf(fotos[i]));
             item.put(HMAux.TEXTO_02, nomes[i]);
             item.put(HMAux.TEXTO_03, "Qtd. Min: " + qtdmins[i]);

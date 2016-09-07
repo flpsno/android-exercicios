@@ -12,35 +12,36 @@
         android:text="DashBoard"
         android:textSize="26sp" />
 
-    <LinearLayout
+
+    <Button
+        android:id="@+id/teladashboard_bt_clientes"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:background="@drawable/buttons"
+        android:text="Clientes"
+        android:textColor="#FFFFFFFF"
+        android:textSize="22sp" />
 
-        <Button
-            android:id="@+id/teladashboard_bt_clientes"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_weight="1"
-            android:background="@drawable/buttons"
-            android:text="Clientes" />
+    <Button
+        android:id="@+id/teladashboard_bt_itens"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/buttons"
+        android:text="Produtos"
+        android:textColor="#FFFFFFFF"
+        android:textSize="22sp" />
 
-        <Button
-            android:id="@+id/teladashboard_bt_itens"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:background="@drawable/buttons"
-            android:layout_weight="1"
-            android:text="Produtos" />
-
-    </LinearLayout>
 
     <Button
         android:id="@+id/teladashboard_bt_pedidos"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/buttons"
-        android:text="Pedidos" />
+        android:text="Pedidos"
+        android:textColor="#FFFFFFFF"
+        android:textSize="22sp" />
 
 </LinearLayout>

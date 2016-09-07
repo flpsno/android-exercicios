@@ -5,7 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="bt_clientes">#59d23a</color>
-    <color name="bt_itens">#59d23a</color>
+    <color name="bt_itens">#FF0000FF</color>
     <color name="bt_pedidos">#59d23a</color>
 
 </resources>
