@@ -17,7 +17,7 @@ public class TelaClientes extends AppCompatActivity {
     private ListView lv_clientes;
     //
     private ArrayList<HMAux> clientes;
-    private SimpleAdapter adapter_clientes;
+    private Adapter_Clientes adapter_clientes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +36,10 @@ public class TelaClientes extends AppCompatActivity {
         String[] De = {HMAux.TEXTO_01, HMAux.TEXTO_02, HMAux.TEXTO_03, HMAux.TEXTO_04};
         int[] Para = {R.id.celulaclientes_tv_nome, R.id.celulaclientes_tv_email,
                 R.id.celulaclientes_tv_telefone, R.id.celulaclientes_tv_estado};
-        adapter_clientes = new SimpleAdapter(
+        adapter_clientes = new Adapter_Clientes(
                 context,
-                gerarClientes(),
                 R.layout.celulaclientes,
-                De,
-                Para
+                gerarClientes()
         );
         lv_clientes.setAdapter(adapter_clientes);
     }
