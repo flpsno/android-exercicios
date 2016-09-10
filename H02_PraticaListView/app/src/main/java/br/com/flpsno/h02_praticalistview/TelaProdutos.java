@@ -21,7 +21,7 @@ public class TelaProdutos extends AppCompatActivity {
     private ListView lv_produtos;
     //
     private ArrayList<HMAux> produtos;
-    private SimpleAdapter adapter_produtos;
+    private Adapter_Produtos adapter_produtos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +41,10 @@ public class TelaProdutos extends AppCompatActivity {
         int[] Para = {R.id.celulaprodutos_iv_produto, R.id.celulaprodutos_tv_nome_produto, R.id.celulaprodutos_tv_qtd_min,
                 R.id.celulaprodutos_tv_preco};
         //
-        adapter_produtos = new SimpleAdapter(
+        adapter_produtos = new Adapter_Produtos(
                 context,
-                gerarProdutos(),
                 R.layout.celulaprodutos,
-                De,
-                Para
+                gerarProdutos()
         );
         //
         lv_produtos.setAdapter(adapter_produtos);
