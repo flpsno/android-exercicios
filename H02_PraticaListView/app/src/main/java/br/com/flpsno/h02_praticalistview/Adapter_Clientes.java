@@ -47,7 +47,6 @@ public class Adapter_Clientes extends BaseAdapter {
             convertView = mInflater.inflate(resource, parent, false);
         }
 
-
         return convertView;
     }
 }

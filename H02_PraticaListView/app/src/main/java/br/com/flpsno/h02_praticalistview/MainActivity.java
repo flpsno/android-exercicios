@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private Context context;
     //
     private Button bt_clientes;
-    private Button bt_itens;
+    private Button bt_produtos;
     private Button bt_pedidos;
 
     @Override
@@ -25,8 +25,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void inicializarVariavel() {
+        context = getBaseContext();
+        //
         bt_clientes = (Button) findViewById(R.id.teladashboard_bt_clientes);
-        bt_itens = (Button) findViewById(R.id.teladashboard_bt_itens);
+        bt_produtos = (Button) findViewById(R.id.teladashboard_bt_itens);
         bt_pedidos = (Button) findViewById(R.id.teladashboard_bt_pedidos);
     }
 
@@ -34,40 +36,28 @@ public class MainActivity extends AppCompatActivity {
         bt_clientes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chamaTela(v);
+                Intent mIntent = new Intent(context, TelaClientes.class);
+                startActivity(mIntent);
+                finish();
             }
         });
         //
-        bt_itens.setOnClickListener(new View.OnClickListener() {
+        bt_produtos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chamaTela(v);
+                Intent mIntent = new Intent(context, TelaProdutos.class);
+                startActivity(mIntent);
+                finish();
             }
         });
         //
         bt_pedidos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chamaTela(v);
+                Intent mIntent = new Intent(context, TelaPedidos.class);
+                startActivity(mIntent);
+                finish();
             }
         });
-    }
-
-    private void chamaTela(View view) {
-
-        switch (view.getId()) {
-            case R.id.teladashboard_bt_clientes:
-                Intent telaclientes = new Intent(this, TelaClientes.class);
-                startActivity(telaclientes);
-                break;
-            case R.id.teladashboard_bt_itens:
-                Intent telaitens = new Intent(this, TelaProdutos.class);
-                startActivity(telaitens);
-                break;
-            case R.id.teladashboard_bt_pedidos:
-                Intent telapedidos = new Intent(this, TelaPedidos.class);
-                startActivity(telapedidos);
-                break;
-        }
     }
 }

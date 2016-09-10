@@ -1,6 +1,7 @@
 package br.com.flpsno.h02_praticalistview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -115,9 +116,12 @@ public class TelaProdutos extends AppCompatActivity {
             "R$ 3,00"
     };
 
+
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        Intent mIntent = new Intent(context, MainActivity.class);
+        startActivity(mIntent);
+        //
         this.finish();
     }
 
