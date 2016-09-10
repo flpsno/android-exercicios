@@ -4,8 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +40,7 @@ public class TelaProdutos extends AppCompatActivity {
         String[] De = {HMAux.TEXTO_01, HMAux.TEXTO_02, HMAux.TEXTO_03, HMAux.TEXTO_04};
         int[] Para = {R.id.celulaprodutos_iv_produto, R.id.celulaprodutos_tv_nome_produto, R.id.celulaprodutos_tv_qtd_min,
                 R.id.celulaprodutos_tv_preco};
+        //
         adapter_produtos = new SimpleAdapter(
                 context,
                 gerarProdutos(),
@@ -56,8 +60,8 @@ public class TelaProdutos extends AppCompatActivity {
             item.put(HMAux.ID, String.valueOf(i + 1));
             item.put(HMAux.TEXTO_01, String.valueOf(fotos[i]));
             item.put(HMAux.TEXTO_02, nomes[i]);
-            item.put(HMAux.TEXTO_03, "Qtd. Min: " + qtdmins[i]);
-            item.put(HMAux.TEXTO_04, precos[i]);
+            item.put(HMAux.TEXTO_03, String.valueOf(qtdmins[i]));
+            item.put(HMAux.TEXTO_04, String.valueOf(precos[i]));
             dados.add(item);
         }
         //
@@ -65,6 +69,19 @@ public class TelaProdutos extends AppCompatActivity {
     }
 
     private void inicializarAcao() {
+        lv_produtos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                HMAux item = (HMAux) parent.getItemAtPosition(position);
+                //
+                Intent mIntent = new Intent(context, TelaEdicaoProduto.class);
+                mIntent.putExtra(Constantes.VALOR_IMAGEM_PRODUTO, Integer.parseInt(item.get(HMAux.TEXTO_01)));
+                mIntent.putExtra(Constantes.VALOR_NOME_PRODUTO, item.get(HMAux.TEXTO_02));
+                mIntent.putExtra(Constantes.VALOR_QTD_MINIMA,item.get(HMAux.TEXTO_03));
+                mIntent.putExtra(Constantes.VALOR_PRECO,item.get(HMAux.TEXTO_04));
+                startActivityForResult(mIntent, 10);
+            }
+        });
 
     }
 
@@ -92,28 +109,28 @@ public class TelaProdutos extends AppCompatActivity {
             "Livro de colorir Pokemon"
     };
 
-    String qtdmins[] = {
-            "20",
-            "20",
-            "20",
-            "20",
-            "20",
-            "20",
-            "20",
-            "20",
-            "20"
+    int qtdmins[] = {
+            20,
+            20,
+            20,
+            20,
+            20,
+            20,
+            20,
+            20,
+            20
     };
 
-    String precos[] = {
-            "R$ 3,50",
-            "R$ 3,50",
-            "R$ 3,50",
-            "R$ 3,50",
-            "R$ 3,50",
-            "R$ 1,80",
-            "R$ 3,50",
-            "R$ 3,50",
-            "R$ 3,00"
+    double precos[] = {
+            3,50,
+            3,50,
+            3,50,
+            3,50,
+            3,50,
+            1,80,
+            3,50,
+            3,50,
+            3,00
     };
 
 

@@ -26,6 +26,10 @@
         <activity
             android:name=".TelaPedidos"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".TelaEdicaoProduto"
+            android:screenOrientation="portrait"></activity>
+
     </application>
 
 </manifest>
