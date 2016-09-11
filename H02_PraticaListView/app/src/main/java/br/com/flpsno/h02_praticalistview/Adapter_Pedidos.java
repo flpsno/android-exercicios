@@ -1,28 +1,25 @@
 package br.com.flpsno.h02_praticalistview;
 
 import android.content.Context;
-import android.support.annotation.IntegerRes;
-import android.support.v4.view.LayoutInflaterFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 /**
- * Created by Felipe on 10/09/2016.
+ * Created by Felipe on 11/09/2016.
  */
-public class Adapter_Produtos extends BaseAdapter {
+public class Adapter_Pedidos extends BaseAdapter {
 
     private LayoutInflater mInflater;
     private int resource;
+    //
     private ArrayList<HMAux> dados;
 
-    public Adapter_Produtos(Context context, int resource, ArrayList<HMAux> dados) {
+    public Adapter_Pedidos(Context context, int resource, ArrayList<HMAux> dados) {
         this.mInflater = LayoutInflater.from(context);
         this.resource = resource;
         this.dados = dados;
@@ -45,21 +42,23 @@ public class Adapter_Produtos extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         if (convertView == null) {
             convertView = mInflater.inflate(resource, parent, false);
         }
         //
         HMAux item = dados.get(position);
         //
-        ImageView iv_produto = (ImageView) convertView.findViewById(R.id.celulaprodutos_iv_produto);
-        TextView tv_nome_produto = (TextView) convertView.findViewById(R.id.celulaprodutos_tv_nome_produto);
-        TextView tv_qtd_minima = (TextView) convertView.findViewById(R.id.celulaprodutos_tv_qtd_min);
-        TextView tv_preco = (TextView) convertView.findViewById(R.id.celulaprodutos_tv_preco);
+        TextView tv_codigo_pedido = (TextView) convertView.findViewById(R.id.celulapedidos_tv_codigo_pedido);
+        TextView tv_cliente = (TextView) convertView.findViewById(R.id.celulapedidos_tv_cliente);
+        TextView tv_total_item = (TextView) convertView.findViewById(R.id.celulapedidos_tv_total_item);
+        TextView tv_valor_total = (TextView) convertView.findViewById(R.id.celulapedidos_tv_valor_total);
         //
-        iv_produto.setImageResource(Integer.parseInt(item.get(HMAux.TEXTO_01)));
-        tv_nome_produto.setText(item.get(HMAux.TEXTO_02));
-        tv_qtd_minima.setText(item.get(HMAux.TEXTO_03) + " un");
-        tv_preco.setText("R$ " + item.get(HMAux.TEXTO_04));
+        tv_codigo_pedido.setText(item.get(HMAux.TEXTO_01));
+        tv_cliente.setText(item.get(HMAux.TEXTO_02));
+        tv_total_item.setText(item.get(HMAux.TEXTO_03) + " produto" +
+                (Integer.parseInt(item.get(HMAux.TEXTO_03)) > 1 ? "s" : ""));
+        tv_valor_total.setText("R$ " + item.get(HMAux.TEXTO_04));
         //
         return convertView;
     }

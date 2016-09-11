@@ -18,7 +18,7 @@ public class TelaPedidos extends AppCompatActivity {
     //
     private ListView lv_pedidos;
     //
-    private SimpleAdapter adapter_pedidos;
+    private Adapter_Pedidos adapter_pedidos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +37,10 @@ public class TelaPedidos extends AppCompatActivity {
         String[] De = {HMAux.TEXTO_01, HMAux.TEXTO_02, HMAux.TEXTO_03, HMAux.TEXTO_04};
         int[] Para = {R.id.celulapedidos_tv_codigo_pedido, R.id.celulapedidos_tv_cliente,
             R.id.celulapedidos_tv_total_item, R.id.celulapedidos_tv_valor_total};
-        adapter_pedidos = new SimpleAdapter(
+        adapter_pedidos = new Adapter_Pedidos(
                 context,
-                gerarPedios(),
                 R.layout.celulapedidos,
-                De,
-                Para
+                gerarPedios()
         );
         //
         lv_pedidos.setAdapter(adapter_pedidos);
@@ -56,8 +54,8 @@ public class TelaPedidos extends AppCompatActivity {
             item.put(HMAux.ID, String.valueOf(i+1));
             item.put(HMAux.TEXTO_01, pedidos[i]);
             item.put(HMAux.TEXTO_02, clientes[i]);
-            item.put(HMAux.TEXTO_03, total_item[i]);
-            item.put(HMAux.TEXTO_04, valor_total[i]);
+            item.put(HMAux.TEXTO_03, String.valueOf(total_item[i]));
+            item.put(HMAux.TEXTO_04, String.valueOf(valor_total[i]));
             dados.add(item);
         }
         //
@@ -94,30 +92,30 @@ public class TelaPedidos extends AppCompatActivity {
             "Isabelle Amorim Bezerra"
     };
 
-    String total_item[] = {
-            "1 produto",
-            "1 produto",
-            "1 produto",
-            "2 produtos",
-            "1 produto",
-            "4 produtos",
-            "1 produto",
-            "5 produtos",
-            "1 produto",
-            "4 produtos"
+    int total_item[] = {
+            1,
+            1,
+            1,
+            2,
+            1,
+            4,
+            1,
+            5,
+            1,
+            4
     };
 
-    String valor_total[] = {
-            "R$ 50,00",
-            "R$ 198,81",
-            "R$ 63,31",
-            "R$ 229,58",
-            "R$ 240,08",
-            "R$ 298,13",
-            "R$ 148,94",
-            "R$ 399,47",
-            "R$ 205,30",
-            "R$ 251,25"
+    double valor_total[] = {
+            50.00,
+            198.81,
+            63.31,
+            229.58,
+            240.08,
+            298.13,
+            148.94,
+            399.47,
+            205.30,
+            251.25
     };
 
     @Override

@@ -120,15 +120,15 @@ public class TelaProdutos extends AppCompatActivity {
     };
 
     double precos[] = {
-            3,50,
-            3,50,
-            3,50,
-            3,50,
-            3,50,
-            1,80,
-            3,50,
-            3,50,
-            3,00
+            3.50,
+            3.50,
+            3.50,
+            3.50,
+            3.50,
+            1.80,
+            3.50,
+            3.50,
+            3.00
     };
 
 
