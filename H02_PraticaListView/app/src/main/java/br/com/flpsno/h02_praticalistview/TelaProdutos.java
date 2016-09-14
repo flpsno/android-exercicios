@@ -16,6 +16,8 @@ import java.util.Map;
 
 public class TelaProdutos extends AppCompatActivity {
 
+    private static final int TELA_EDICAO_PRODUTOS = 100;
+    //
     private Context context;
     //
     private ListView lv_produtos;
@@ -77,10 +79,38 @@ public class TelaProdutos extends AppCompatActivity {
                 mIntent.putExtra(Constantes.VALOR_NOME_PRODUTO, item.get(HMAux.TEXTO_02));
                 mIntent.putExtra(Constantes.VALOR_QTD_MINIMA,item.get(HMAux.TEXTO_03));
                 mIntent.putExtra(Constantes.VALOR_PRECO,item.get(HMAux.TEXTO_04));
-                startActivityForResult(mIntent, 10);
+                startActivityForResult(mIntent, TELA_EDICAO_PRODUTOS);
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        switch (requestCode) {
+            case TELA_EDICAO_PRODUTOS:
+                processarResultado(resultCode, data);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void processarResultado(int resultCode, Intent data) {
+        String resultado = "";
+        //
+        if (resultCode == RESULT_OK) {
+            resultado = "Salvo Com Sucesso!!";
+        } else {
+            resultado = "Cancelado!!!";
+        }
+        //
+        Toast.makeText(
+                context,
+                resultado,
+                Toast.LENGTH_SHORT
+        ).show();
     }
 
     int fotos[] = {

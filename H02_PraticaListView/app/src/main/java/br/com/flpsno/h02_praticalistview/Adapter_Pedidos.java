@@ -54,11 +54,13 @@ public class Adapter_Pedidos extends BaseAdapter {
         TextView tv_total_item = (TextView) convertView.findViewById(R.id.celulapedidos_tv_total_item);
         TextView tv_valor_total = (TextView) convertView.findViewById(R.id.celulapedidos_tv_valor_total);
         //
+        float valor_total = Float.parseFloat(item.get(HMAux.TEXTO_04));
+        //
         tv_codigo_pedido.setText(item.get(HMAux.TEXTO_01));
         tv_cliente.setText(item.get(HMAux.TEXTO_02));
         tv_total_item.setText(item.get(HMAux.TEXTO_03) + " produto" +
                 (Integer.parseInt(item.get(HMAux.TEXTO_03)) > 1 ? "s" : ""));
-        tv_valor_total.setText("R$ " + item.get(HMAux.TEXTO_04));
+        tv_valor_total.setText("R$ " + String.format("%.02f", valor_total));
         //
         return convertView;
     }

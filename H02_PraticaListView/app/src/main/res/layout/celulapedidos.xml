@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="Código do Pedido"
         android:textColor="#FF000000"
-        android:textSize="18sp" />
+        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/celulapedidos_tv_cliente"
@@ -27,17 +27,17 @@
         <TextView
             android:id="@+id/celulapedidos_tv_total_item"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="9"
-            android:text="Total de Itens"
-            android:layout_height="wrap_content" />
+            android:text="Total de Itens" />
 
         <TextView
             android:id="@+id/celulapedidos_tv_valor_total"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="3"
             android:text="Valor Total"
-            android:textColor="#FFFF0000"
-            android:layout_height="wrap_content" />
+            android:textColor="#FFFF0000" />
 
     </LinearLayout>
 

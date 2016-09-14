@@ -56,10 +56,12 @@ public class Adapter_Produtos extends BaseAdapter {
         TextView tv_qtd_minima = (TextView) convertView.findViewById(R.id.celulaprodutos_tv_qtd_min);
         TextView tv_preco = (TextView) convertView.findViewById(R.id.celulaprodutos_tv_preco);
         //
+        float preco = Float.parseFloat( item.get(HMAux.TEXTO_04));
+        //
         iv_produto.setImageResource(Integer.parseInt(item.get(HMAux.TEXTO_01)));
         tv_nome_produto.setText(item.get(HMAux.TEXTO_02));
         tv_qtd_minima.setText(item.get(HMAux.TEXTO_03) + " un");
-        tv_preco.setText("R$ " + item.get(HMAux.TEXTO_04));
+        tv_preco.setText("R$ " + String.format("%.02f", preco));
         //
         return convertView;
     }
