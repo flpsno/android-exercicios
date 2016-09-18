@@ -1,15 +1,16 @@
-package br.com.flpsno.h02_praticalistview;
+package br.com.flpsno.h02_praticalistview.ui;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+
+import br.com.flpsno.h02_praticalistview.R;
+import br.com.flpsno.h02_praticalistview.adapter.Adapter_Clientes;
+import br.com.flpsno.h02_praticalistview.banco.HMAux;
 
 public class TelaClientes extends AppCompatActivity {
 

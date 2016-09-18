@@ -1,8 +1,6 @@
-package br.com.flpsno.h02_praticalistview;
+package br.com.flpsno.h02_praticalistview.adapter;
 
 import android.content.Context;
-import android.support.annotation.IntegerRes;
-import android.support.v4.view.LayoutInflaterFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
+
+import br.com.flpsno.h02_praticalistview.banco.HMAux;
+import br.com.flpsno.h02_praticalistview.R;
 
 /**
  * Created by Felipe on 10/09/2016.
@@ -56,11 +56,11 @@ public class Adapter_Produtos extends BaseAdapter {
         TextView tv_qtd_minima = (TextView) convertView.findViewById(R.id.celulaprodutos_tv_qtd_min);
         TextView tv_preco = (TextView) convertView.findViewById(R.id.celulaprodutos_tv_preco);
         //
-        float preco = Float.parseFloat( item.get(HMAux.TEXTO_04));
+        float preco = Float.parseFloat( item.get(HMAux.TEXTO_03));
         //
-        iv_produto.setImageResource(Integer.parseInt(item.get(HMAux.TEXTO_01)));
-        tv_nome_produto.setText(item.get(HMAux.TEXTO_02));
-        tv_qtd_minima.setText(item.get(HMAux.TEXTO_03) + " un");
+        iv_produto.setImageResource(R.mipmap.ic_launcher);
+        tv_nome_produto.setText(item.get(HMAux.TEXTO_01));
+        tv_qtd_minima.setText(item.get(HMAux.TEXTO_02) + " un");
         tv_preco.setText("R$ " + String.format("%.02f", preco));
         //
         return convertView;

@@ -1,7 +1,6 @@
-package br.com.flpsno.h02_praticalistview;
+package br.com.flpsno.h02_praticalistview.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import br.com.flpsno.h02_praticalistview.banco.HMAux;
+import br.com.flpsno.h02_praticalistview.R;
 
 /**
  * Created by Felipe on 09/09/2016.

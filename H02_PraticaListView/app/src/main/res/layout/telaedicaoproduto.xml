@@ -8,16 +8,32 @@
     <ImageView
         android:id="@+id/telaedicaopedido_iv_produto"
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="100dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Nome do Produto:" />
+        android:inputType="text"
+        android:text="Código:" />
 
     <EditText
-        android:id="@+id/telaedicaoproduto_et_nome_produto"
+        android:enabled="false"
+        android:id="@+id/telaedicaoproduto_et_codigo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:inputType="text"
+        android:text="Descrição:" />
+
+    <EditText
+        android:id="@+id/telaedicaoproduto_et_descricao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text" />
@@ -53,19 +69,19 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/telaedicaoproduto_bt_excluir"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="Excluir" />
+
+        <Button
             android:id="@+id/telaedicaoproduto_bt_salvar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Salvar" />
-
-        <Button
-            android:id="@+id/telaedicaoproduto_bt_cancelar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:text="Cancelar" />
 
 
     </LinearLayout>

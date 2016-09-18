@@ -1,4 +1,4 @@
-package br.com.flpsno.h02_praticalistview;
+package br.com.flpsno.h02_praticalistview.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import br.com.flpsno.h02_praticalistview.R;
 
 public class MainActivity extends AppCompatActivity {
 

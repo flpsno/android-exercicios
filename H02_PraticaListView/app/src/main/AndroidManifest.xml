@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,16 +18,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TelaClientes"
+            android:name=".ui.TelaClientes"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TelaProdutos"
+            android:name=".ui.TelaProdutos"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TelaPedidos"
+            android:name=".ui.TelaPedidos"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".TelaEdicaoProduto"
+            android:name=".ui.TelaEdicaoProduto"
             android:screenOrientation="portrait"></activity>
 
     </application>
