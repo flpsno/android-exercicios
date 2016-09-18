@@ -145,8 +145,6 @@ public class ProdutoDao extends Dao {
                     .append(",")
                     .append(DESCRICAO)
                     .append(",")
-                    .append(QTD_MIN)
-                    .append(",")
                     .append(VALOR_UNITARIO)
                     .append(" from ")
                     .append(TABELA)
@@ -159,8 +157,7 @@ public class ProdutoDao extends Dao {
                 //
                 pAux.put(HMAux.ID, String.valueOf(cursor.getLong(cursor.getColumnIndex(IDPRODUTO))));
                 pAux.put(HMAux.TEXTO_01, cursor.getString(cursor.getColumnIndex(DESCRICAO)));
-                pAux.put(HMAux.TEXTO_02, String.valueOf(cursor.getInt(cursor.getColumnIndex(QTD_MIN))));
-                pAux.put(HMAux.TEXTO_03, String.valueOf(cursor.getDouble(cursor.getColumnIndex(VALOR_UNITARIO))));
+                pAux.put(HMAux.TEXTO_02, String.valueOf(cursor.getDouble(cursor.getColumnIndex(VALOR_UNITARIO))));
                 //
                 produtos.add(pAux);
             }

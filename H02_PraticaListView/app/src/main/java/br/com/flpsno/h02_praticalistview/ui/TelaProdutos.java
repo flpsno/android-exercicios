@@ -42,10 +42,6 @@ public class TelaProdutos extends AppCompatActivity {
         //
         produtoDao = new ProdutoDao(context);
         //
-        String[] De = {HMAux.TEXTO_01, HMAux.TEXTO_02, HMAux.TEXTO_03, HMAux.TEXTO_04};
-        int[] Para = {R.id.celulaprodutos_iv_produto, R.id.celulaprodutos_tv_nome_produto, R.id.celulaprodutos_tv_qtd_min,
-                R.id.celulaprodutos_tv_preco};
-        //
         adapter_produtos = new Adapter_Produtos(
                 context,
                 R.layout.celulaprodutos,

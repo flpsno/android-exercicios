@@ -51,17 +51,12 @@ public class Adapter_Produtos extends BaseAdapter {
         //
         HMAux item = dados.get(position);
         //
-        ImageView iv_produto = (ImageView) convertView.findViewById(R.id.celulaprodutos_iv_produto);
-        TextView tv_nome_produto = (TextView) convertView.findViewById(R.id.celulaprodutos_tv_nome_produto);
-        TextView tv_qtd_minima = (TextView) convertView.findViewById(R.id.celulaprodutos_tv_qtd_min);
-        TextView tv_preco = (TextView) convertView.findViewById(R.id.celulaprodutos_tv_preco);
+        TextView tv_descricao = (TextView) convertView.findViewById(R.id.celulaprodutos_tv_descricao);
+        TextView tv_valor_unitario = (TextView) convertView.findViewById(R.id.celulaprodutos_tv_valor_unitario);
         //
-        float preco = Float.parseFloat( item.get(HMAux.TEXTO_03));
-        //
-        iv_produto.setImageResource(R.mipmap.ic_launcher);
-        tv_nome_produto.setText(item.get(HMAux.TEXTO_01));
-        tv_qtd_minima.setText(item.get(HMAux.TEXTO_02) + " un");
-        tv_preco.setText("R$ " + String.format("%.02f", preco));
+        tv_descricao.setText(item.get(HMAux.TEXTO_01));
+        float preco = Float.parseFloat( item.get(HMAux.TEXTO_02));
+        tv_valor_unitario.setText("R$ " + String.format("%.02f", preco));
         //
         return convertView;
     }

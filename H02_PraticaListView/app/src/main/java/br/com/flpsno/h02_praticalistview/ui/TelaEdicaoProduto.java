@@ -24,7 +24,6 @@ public class TelaEdicaoProduto extends AppCompatActivity {
 
     private Context context;
     //
-    private ImageView iv_produto;
     private EditText et_codigo;
     private EditText et_descricao;
     private EditText et_qtd_minima;
@@ -49,7 +48,6 @@ public class TelaEdicaoProduto extends AppCompatActivity {
         //
         produtoDao = new ProdutoDao(context);
         //
-        iv_produto = (ImageView) findViewById(R.id.telaedicaopedido_iv_produto);
         et_codigo = (EditText) findViewById(R.id.telaedicaoproduto_et_codigo);
         et_descricao = (EditText) findViewById(R.id.telaedicaoproduto_et_descricao);
         et_qtd_minima = (EditText) findViewById(R.id.telaedicaoproduto_et_qtd_minima);
@@ -58,8 +56,6 @@ public class TelaEdicaoProduto extends AppCompatActivity {
         bt_excluir = (Button) findViewById(R.id.telaedicaoproduto_bt_excluir);
         //
         recuperarParametros();
-
-        iv_produto.setImageResource(R.mipmap.ic_launcher);
         //
         if (idAtual != -1) {
             Produto pAux = produtoDao.obterProdutoByID(idAtual);
