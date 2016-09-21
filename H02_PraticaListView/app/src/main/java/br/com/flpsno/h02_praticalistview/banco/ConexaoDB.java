@@ -21,7 +21,6 @@ public class ConexaoDB extends SQLiteOpenHelper {
         sb.append("CREATE TABLE if not exists produtos (\n" +
                 "    idproduto      BIGINT PRIMARY KEY\n" +
                 "                          NOT NULL,\n" +
-                "    codigo         TEXT   NOT NULL,\n" +
                 "    descricao      TEXT   NOT NULL,\n" +
                 "    qtd_min        INT    NOT NULL,\n" +
                 "    valor_unitario DOUBLE NOT NULL\n" +

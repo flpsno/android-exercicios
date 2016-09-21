@@ -6,7 +6,7 @@ package br.com.flpsno.h02_praticalistview.banco;
 public class Constantes {
 
     public static final String DATA_BASE = "banco.db3";
-    public static final int VERSAO = 1;
+    public static final int VERSAO = 2;
 
     public static final String VALOR_IMAGEM_PRODUTO = "valor_imagem_produto";
     public static final String VALOR_NOME_PRODUTO = "valor_nome_produto";

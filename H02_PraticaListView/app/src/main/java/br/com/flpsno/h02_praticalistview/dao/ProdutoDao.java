@@ -17,7 +17,6 @@ public class ProdutoDao extends Dao {
 
     private static final String TABELA = "produtos";
     private static final String IDPRODUTO = "idproduto";
-    private static final String CODIGO = "codigo";
     private static final String DESCRICAO = "descricao";
     private static final String QTD_MIN = "qtd_min";
     private static final String VALOR_UNITARIO = "valor_unitario";
@@ -32,7 +31,6 @@ public class ProdutoDao extends Dao {
         ContentValues cv = new ContentValues();
         //
         cv.put(IDPRODUTO, produto.getIdproduto());
-        cv.put(CODIGO, produto.getCodigo());
         cv.put(DESCRICAO, produto.getDescricao());
         cv.put(QTD_MIN, produto.getQtd_min());
         cv.put(VALOR_UNITARIO, produto.getValor_unitario());
@@ -56,7 +54,6 @@ public class ProdutoDao extends Dao {
                 String.valueOf(produto.getIdproduto())
         };
         //
-        cv.put(CODIGO, produto.getCodigo());
         cv.put(DESCRICAO, produto.getDescricao());
         cv.put(QTD_MIN, produto.getQtd_min());
         cv.put(VALOR_UNITARIO, produto.getValor_unitario());
@@ -113,7 +110,6 @@ public class ProdutoDao extends Dao {
                 pAux = new Produto();
                 //
                 pAux.setIdproduto(cursor.getLong(cursor.getColumnIndex(IDPRODUTO)));
-                pAux.setCodigo(cursor.getString(cursor.getColumnIndex(CODIGO)));
                 pAux.setDescricao(cursor.getString(cursor.getColumnIndex(DESCRICAO)));
                 pAux.setQtd_min(cursor.getInt(cursor.getColumnIndex(QTD_MIN)));
                 pAux.setValor_unitario(cursor.getDouble(cursor.getColumnIndex(VALOR_UNITARIO)));

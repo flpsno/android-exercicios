@@ -94,7 +94,6 @@ public class TelaEdicaoProduto extends AppCompatActivity {
     private void salvarContato() {
         Produto pAux = new Produto();
         //
-        pAux.setCodigo(et_codigo.getText().toString().trim());
         pAux.setDescricao(et_descricao.getText().toString().trim());
         pAux.setQtd_min(Integer.parseInt(et_qtd_minima.getText().toString().trim()));
         pAux.setValor_unitario(Double.parseDouble(et_preco.getText().toString()));

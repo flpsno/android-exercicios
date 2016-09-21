@@ -12,7 +12,6 @@ public class Produto {
     private double valor_unitario;
 
     public Produto() {
-        this.codigo = "";
         this.descricao = "";
         this.qtd_min = 0;
         this.valor_unitario = 0;
@@ -24,14 +23,6 @@ public class Produto {
 
     public void setIdproduto(long idproduto) {
         this.idproduto = idproduto;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 
     public String getDescricao() {
