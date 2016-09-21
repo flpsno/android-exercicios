@@ -14,13 +14,4 @@
         android:gravity="center_vertical"
         android:text="Nome do Produto"
         android:textSize="18sp" />
-
-    <TextView
-        android:gravity="right"
-        android:id="@+id/celulaprodutos_tv_valor_unitario"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:text="R$ 100,00"
-        android:textColor="#FFFF0000" />
 </LinearLayout>

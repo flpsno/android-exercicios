@@ -52,11 +52,8 @@ public class Adapter_Produtos extends BaseAdapter {
         HMAux item = dados.get(position);
         //
         TextView tv_descricao = (TextView) convertView.findViewById(R.id.celulaprodutos_tv_descricao);
-        TextView tv_valor_unitario = (TextView) convertView.findViewById(R.id.celulaprodutos_tv_valor_unitario);
         //
         tv_descricao.setText(item.get(HMAux.TEXTO_01));
-        float preco = Float.parseFloat( item.get(HMAux.TEXTO_02));
-        tv_valor_unitario.setText("R$ " + String.format("%.02f", preco));
         //
         return convertView;
     }
