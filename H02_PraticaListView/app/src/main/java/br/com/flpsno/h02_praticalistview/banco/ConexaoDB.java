@@ -26,6 +26,16 @@ public class ConexaoDB extends SQLiteOpenHelper {
                 "    valor_unitario DOUBLE NOT NULL\n" +
                 ");");
         //
+        sb.append("CREATE TABLE if not exists clientes (\n" +
+                "    idcliente      BIGINT PRIMARY KEY\n" +
+                "                          NOT NULL,\n" +
+                "    nome           TEXT   NOT NULL,\n" +
+                "    email          TEXT   NOT NULL,\n" +
+                "    telefone       TEXT   NOT NULL,\n" +
+                "    estado         TEXT   NOT NULL\n" +
+                ");");
+        //
+
         String [] comandos = sb.toString().split(";");
         //
         for (int i = 0; i < comandos.length; i++) {
@@ -39,6 +49,7 @@ public class ConexaoDB extends SQLiteOpenHelper {
         StringBuilder sb = new StringBuilder();
         //
         sb.append("DROP TABLE IF EXISTS produtos;");
+        sb.append("DROP TABLE IF EXISTS clientes;");
         //
         String [] comandos = sb.toString().split(";");
         //

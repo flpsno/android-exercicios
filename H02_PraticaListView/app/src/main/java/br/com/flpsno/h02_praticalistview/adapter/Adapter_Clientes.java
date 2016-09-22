@@ -59,8 +59,8 @@ public class Adapter_Clientes extends BaseAdapter {
         //
         tv_nome.setText(item.get(HMAux.TEXTO_01));
         tv_email.setText(item.get(HMAux.TEXTO_02));
-        tv_telefone.setText(item.get(HMAux.TEXTO_03));
-        tv_estado.setText(item.get(HMAux.TEXTO_04));
+//        tv_telefone.setText(item.get(HMAux.TEXTO_03));
+//        tv_estado.setText(item.get(HMAux.TEXTO_04));
         //
         return convertView;
     }

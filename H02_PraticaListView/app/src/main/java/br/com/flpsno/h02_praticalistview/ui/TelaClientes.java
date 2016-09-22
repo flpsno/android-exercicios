@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import br.com.flpsno.h02_praticalistview.R;
 import br.com.flpsno.h02_praticalistview.adapter.Adapter_Clientes;
 import br.com.flpsno.h02_praticalistview.banco.HMAux;
+import br.com.flpsno.h02_praticalistview.dao.ClienteDao;
 
 public class TelaClientes extends AppCompatActivity {
 
@@ -20,6 +21,8 @@ public class TelaClientes extends AppCompatActivity {
     //
     private ArrayList<HMAux> clientes;
     private Adapter_Clientes adapter_clientes;
+    //
+    private ClienteDao clienteDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,8 @@ public class TelaClientes extends AppCompatActivity {
     private void inicializarVariavel() {
         context = getBaseContext();
         //
+        clienteDao = new ClienteDao(context);
+        //
         lv_clientes = (ListView) findViewById(R.id.telaclientes_lv_clientes);
         //
         String[] De = {HMAux.TEXTO_01, HMAux.TEXTO_02, HMAux.TEXTO_03, HMAux.TEXTO_04};
@@ -41,7 +46,7 @@ public class TelaClientes extends AppCompatActivity {
         adapter_clientes = new Adapter_Clientes(
                 context,
                 R.layout.celulaclientes,
-                gerarClientes()
+                clienteDao.obterClientes_hm()
         );
         lv_clientes.setAdapter(adapter_clientes);
     }
