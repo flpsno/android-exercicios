@@ -54,13 +54,9 @@ public class Adapter_Clientes extends BaseAdapter {
         //
         TextView tv_nome = (TextView) convertView.findViewById(R.id.celulaclientes_tv_nome);
         TextView tv_email = (TextView) convertView.findViewById(R.id.celulaclientes_tv_email);
-        TextView tv_telefone = (TextView) convertView.findViewById(R.id.celulaclientes_tv_telefone);
-        TextView tv_estado = (TextView) convertView.findViewById(R.id.celulaclientes_tv_estado);
         //
         tv_nome.setText(item.get(HMAux.TEXTO_01));
         tv_email.setText(item.get(HMAux.TEXTO_02));
-//        tv_telefone.setText(item.get(HMAux.TEXTO_03));
-//        tv_estado.setText(item.get(HMAux.TEXTO_04));
         //
         return convertView;
     }

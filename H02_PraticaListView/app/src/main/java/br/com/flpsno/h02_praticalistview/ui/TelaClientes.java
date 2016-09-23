@@ -4,12 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 import br.com.flpsno.h02_praticalistview.R;
 import br.com.flpsno.h02_praticalistview.adapter.Adapter_Clientes;
+import br.com.flpsno.h02_praticalistview.banco.Constantes;
 import br.com.flpsno.h02_praticalistview.banco.HMAux;
 import br.com.flpsno.h02_praticalistview.dao.ClienteDao;
 
@@ -40,9 +45,6 @@ public class TelaClientes extends AppCompatActivity {
         //
         lv_clientes = (ListView) findViewById(R.id.telaclientes_lv_clientes);
         //
-        String[] De = {HMAux.TEXTO_01, HMAux.TEXTO_02, HMAux.TEXTO_03, HMAux.TEXTO_04};
-        int[] Para = {R.id.celulaclientes_tv_nome, R.id.celulaclientes_tv_email,
-                R.id.celulaclientes_tv_telefone, R.id.celulaclientes_tv_estado};
         adapter_clientes = new Adapter_Clientes(
                 context,
                 R.layout.celulaclientes,
@@ -51,48 +53,16 @@ public class TelaClientes extends AppCompatActivity {
         lv_clientes.setAdapter(adapter_clientes);
     }
 
-    private ArrayList<HMAux> gerarClientes() {
-        ArrayList<HMAux> dados = new ArrayList<>();
-        //
-        for (int i = 0; i < nomes.length; i++) {
-            HMAux item = new HMAux();
-            item.put(HMAux.ID, String.valueOf(i + 1));
-            item.put(HMAux.TEXTO_01, nomes[i]);
-            item.put(HMAux.TEXTO_02, emails[i]);
-            item.put(HMAux.TEXTO_03, telefones[i]);
-            item.put(HMAux.TEXTO_04, estados[i]);
-            dados.add(item);
-        }
-        //
-        return dados;
-    }
-
     private void inicializarAcao() {
-
+        lv_clientes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                HMAux item = (HMAux) parent.getItemAtPosition(position);
+                //
+                chamarDetalhes(Long.parseLong(item.get(HMAux.ID)));
+            }
+        });
     }
-
-    String nomes[] = {
-            "Barbara", "Liliane Ferreira de Oliveira", "Raquel Amaral", "Luciana Sadalla",
-            "Marcela Resende Oliveira", "Monique class Almeida Vieira", "Patricia Gouvêa",
-            "Cristiane Correia Cavalcante", "PAULA CAVIGLIA SCHADLICH", "Renata Ferreira Salvany",
-    };
-
-    String emails[] = {
-            "babi_mota_souza@hotmail.com", "lilianellk@hotmail.com", "rakel_rocha@yahoo.com.br",
-            "lucianafranklin@yahoo.com.br", "marcelaresende@gmail.com", "moniqueclass03@gmail.com",
-            "plg.duarte@hotmail.com", "rocris2005@ig.com.br", "paulacaviglia@hotmail.com",
-            "rena_luiza@hotmail.com",
-    };
-
-    String estados[] = {
-            "RJ", "RJ", "AC", "SP", "RJ", "RJ", "SP", "SP", "SP", "RJ",
-    };
-
-    String telefones[] = {
-            "39043608", "(24) 99858-0470", "", "50554839", "81916000", "(21) 99409-0573",
-            "38448141", "56623638", "(11) 98122-1950",
-            "",
-    };
 
     @Override
     public void onBackPressed() {
@@ -100,5 +70,39 @@ public class TelaClientes extends AppCompatActivity {
         startActivity(mIntent);
         //
         this.finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_incluir_contato) {
+
+            chamarDetalhes(-1L);
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void chamarDetalhes(long idproduto) {
+        Intent mIntent = new Intent(context, TelaEdicaoCliente.class);
+        mIntent.putExtra(Constantes.PARAMETRO_ID, idproduto);
+        //
+        startActivity(mIntent);
+        //
+        finish();
     }
 }

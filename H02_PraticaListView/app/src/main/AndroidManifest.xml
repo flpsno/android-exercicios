@@ -30,6 +30,9 @@
             android:name=".ui.TelaEdicaoProduto"
             android:screenOrientation="portrait"></activity>
 
+        <activity
+            android:name=".ui.TelaEdicaoCliente"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
