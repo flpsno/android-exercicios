@@ -115,7 +115,7 @@ public class ClienteDao extends Dao {
                 cAux.setNome(cursor.getString(cursor.getColumnIndex(NOME)));
                 cAux.setEmail(cursor.getString(cursor.getColumnIndex(EMAIL)));
                 cAux.setTelefone(cursor.getString(cursor.getColumnIndex(TELEFONE)));
-                cAux.setEmail(cursor.getString(cursor.getColumnIndex(ESTADO)));
+                cAux.setEstado(cursor.getString(cursor.getColumnIndex(ESTADO)));
             }
             //
             cursor.close();

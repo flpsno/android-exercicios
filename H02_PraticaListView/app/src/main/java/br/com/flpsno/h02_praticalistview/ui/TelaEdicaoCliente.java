@@ -1,16 +1,24 @@
 package br.com.flpsno.h02_praticalistview.ui;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import br.com.flpsno.h02_praticalistview.R;
 import br.com.flpsno.h02_praticalistview.banco.Constantes;
@@ -31,10 +39,12 @@ public class TelaEdicaoCliente extends AppCompatActivity {
     private EditText et_nome;
     private EditText et_email;
     private EditText et_telefone;
-    private EditText et_estado;
+    private Spinner sp_estado;
     //
     private Button bt_excluir;
     private Button bt_salvar;
+    //
+    private ArrayAdapter<String> adapter_estados;
     //
     private Long idAtual;
 
@@ -56,12 +66,23 @@ public class TelaEdicaoCliente extends AppCompatActivity {
         et_nome = (EditText) findViewById(R.id.telaedicaocliente_et_nome);
         et_email = (EditText) findViewById(R.id.telaedicaocliente_et_email);
         et_telefone = (EditText) findViewById(R.id.telaedicaocliente_et_telefone);
-        et_estado = (EditText) findViewById(R.id.telaedicaocliente_et_estado);
+        sp_estado = (Spinner) findViewById(R.id.telaedicaocliente_sp_estado);
         //
         bt_salvar = (Button) findViewById(R.id.telaedicaocliente_bt_salvar);
         bt_excluir = (Button) findViewById(R.id.telaedicaocliente_bt_excluir);
         //
         recuperarParametros();
+        //
+        adapter_estados = new ArrayAdapter<String>(
+                context,
+                android.R.layout.simple_spinner_item,
+                Constantes.estados
+        );
+        //
+        adapter_estados.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item
+        );
+        sp_estado.setAdapter(adapter_estados);
         //
         if (idAtual != -1) {
             Cliente cAux = clienteDao.obterClienteByID(idAtual);
@@ -70,12 +91,28 @@ public class TelaEdicaoCliente extends AppCompatActivity {
             et_nome.setText(cAux.getNome());
             et_email.setText(cAux.getEmail());
             et_telefone.setText(cAux.getTelefone());
-            et_estado.setText(cAux.getEstado());
+            sp_estado.setSelection(descobrirPosicaoEstado(sp_estado, cAux.getEstado()));
             //
             bt_excluir.setVisibility(View.VISIBLE);
         } else {
             bt_excluir.setVisibility(View.GONE);
         }
+    }
+
+    private int descobrirPosicaoEstado(Spinner spAux, String estado) {
+        int indice = 0;
+        //
+        for (int i = 0; i < spAux.getCount(); i++) {
+            String sAux = (String) spAux.getItemAtPosition(i);
+            //
+            if (sAux.equalsIgnoreCase(estado)){
+                indice = i;
+                //
+                break;
+            }
+        }
+        //
+        return indice;
     }
 
     private void recuperarParametros() {
@@ -124,7 +161,7 @@ public class TelaEdicaoCliente extends AppCompatActivity {
         cAux.setNome(et_nome.getText().toString().trim());
         cAux.setEmail(et_email.getText().toString().trim());
         cAux.setTelefone(et_telefone.getText().toString());
-        cAux.setEstado(et_estado.getText().toString());
+        cAux.setEstado(sp_estado.getSelectedItem().toString());
         //
         if (idAtual != -1) {
             cAux.setIdcliente(idAtual);
@@ -142,7 +179,52 @@ public class TelaEdicaoCliente extends AppCompatActivity {
             bt_excluir.setVisibility(View.VISIBLE);
         }
 
-        exibirMensagem("Produto Salvo com Sucesso");
+        exibirNotificacao("Edição de Clientes", "Cliente " + cAux.getNome() + " salvo com sucesso!!!", (int) cAux.getIdcliente());
+        //exibirMensagem("Produto Salvo com Sucesso");
+    }
+
+    private void exibirNotificacao(String titulo, String mensagem, int idnotificacao) {
+        Intent mIntent = new Intent(
+                context,
+                MainActivity.class
+        );
+        //
+        PendingIntent pi = PendingIntent.getActivity(
+                context,
+                0,
+                mIntent,
+                0
+        );
+        //
+        NotificationManager nm = (NotificationManager)
+                context.getSystemService(NOTIFICATION_SERVICE);
+        //
+        Notification.Builder notificacao =
+                new Notification.Builder(context);
+        //
+        notificacao.setContentIntent(pi)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setAutoCancel(true)
+                .setContentTitle(titulo)
+                .setContentText(mensagem);
+        //
+        notificacao.setDefaults(
+                Notification.DEFAULT_SOUND |
+                        Notification.DEFAULT_VIBRATE);
+        //
+        int versao = Build.VERSION.SDK_INT;
+
+        if (versao >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            nm.notify(
+                    idnotificacao,
+                    notificacao.build()
+            );
+        } else {
+            nm.notify(
+                    idnotificacao,
+                    notificacao.getNotification()
+            );
+        }
     }
 
     private void exibirMensagem(String texto) {
