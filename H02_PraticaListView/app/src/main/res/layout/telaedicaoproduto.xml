@@ -2,83 +2,93 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:text="Código:" />
-
-    <EditText
-        android:enabled="false"
-        android:id="@+id/telaedicaoproduto_et_codigo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:inputType="text"
-        android:text="Descrição:" />
-
-    <EditText
-        android:id="@+id/telaedicaoproduto_et_descricao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Quantidade Mínima:" />
-
-    <EditText
-        android:id="@+id/telaedicaoproduto_et_qtd_minima"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:inputType="number" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Preço Unitário:" />
-
-    <EditText
-        android:id="@+id/telaedicaoproduto_et_preco"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal" />
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/app_bar" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <Button
-            android:id="@+id/telaedicaoproduto_bt_excluir"
-            android:layout_width="0dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:text="Excluir" />
+            android:inputType="text"
+            android:text="Código:" />
 
-        <Button
-            android:id="@+id/telaedicaoproduto_bt_salvar"
-            android:layout_width="0dp"
+        <EditText
+            android:id="@+id/telaedicaoproduto_et_codigo"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Salvar" />
+            android:enabled="false"
+            android:inputType="text" />
 
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:text="Descrição:" />
+
+        <EditText
+            android:id="@+id/telaedicaoproduto_et_descricao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Quantidade Mínima:" />
+
+        <EditText
+            android:id="@+id/telaedicaoproduto_et_qtd_minima"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Preço Unitário:" />
+
+        <EditText
+            android:id="@+id/telaedicaoproduto_et_preco"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/telaedicaoproduto_bt_excluir"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="Excluir" />
+
+            <Button
+                android:id="@+id/telaedicaoproduto_bt_salvar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Salvar" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
-
 
 </LinearLayout>

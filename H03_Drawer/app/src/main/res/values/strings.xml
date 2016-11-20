@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">T_021_Drawer</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <!-- -->
+    <string name="drawer_aberto">Drawer Aberto</string>
+    <string name="drawer_fechado">Drawer Fechado</string>
+
+</resources>

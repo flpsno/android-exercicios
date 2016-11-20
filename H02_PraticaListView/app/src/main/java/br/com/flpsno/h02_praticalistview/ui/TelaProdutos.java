@@ -2,11 +2,16 @@ package br.com.flpsno.h02_praticalistview.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -20,11 +25,14 @@ public class TelaProdutos extends AppCompatActivity {
 
     private Context context;
     //
+    private Toolbar toolbar;
+    //
     private ListView lv_produtos;
     //
     private Adapter_Produtos adapter_produtos;
     //
     private ProdutoDao produtoDao;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +41,15 @@ public class TelaProdutos extends AppCompatActivity {
         //
         inicializarVariavel();
         inicializarAcao();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void inicializarVariavel() {
         context = getBaseContext();
+        //
+        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
         //
         lv_produtos = (ListView) findViewById(R.id.telaprodutos_lv_produtos);
         //
@@ -90,6 +103,11 @@ public class TelaProdutos extends AppCompatActivity {
 
             chamarDetalhes(-1L);
 
+            return true;
+        }
+
+        if (id == android.R.id.home) {
+            onBackPressed();
             return true;
         }
 

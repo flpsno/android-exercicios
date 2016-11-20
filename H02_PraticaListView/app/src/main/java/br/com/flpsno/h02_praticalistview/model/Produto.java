@@ -17,6 +17,14 @@ public class Produto {
         this.valor_unitario = 0;
     }
 
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
     public long getIdproduto() {
         return idproduto;
     }

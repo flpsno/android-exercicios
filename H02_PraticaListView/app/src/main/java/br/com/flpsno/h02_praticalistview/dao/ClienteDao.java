@@ -20,6 +20,7 @@ public class ClienteDao extends Dao {
     private static final String NOME = "nome";
     private static final String EMAIL = "email";
     private static final String TELEFONE = "telefone";
+    private static final String CIDADE = "cidade";
     private static final String ESTADO = "estado";
 
     public ClienteDao(Context context) {
@@ -35,6 +36,7 @@ public class ClienteDao extends Dao {
         cv.put(NOME, cliente.getNome());
         cv.put(EMAIL, cliente.getEmail());
         cv.put(TELEFONE, cliente.getTelefone());
+        cv.put(CIDADE, cliente.getCidade());
         cv.put(ESTADO, cliente.getEstado());
         //
         db.insert(
@@ -59,6 +61,7 @@ public class ClienteDao extends Dao {
         cv.put(NOME, cliente.getNome());
         cv.put(EMAIL, cliente.getEmail());
         cv.put(TELEFONE, cliente.getTelefone());
+        cv.put(CIDADE, cliente.getCidade());
         cv.put(ESTADO, cliente.getEstado());
         //
         db.update(
@@ -115,6 +118,7 @@ public class ClienteDao extends Dao {
                 cAux.setNome(cursor.getString(cursor.getColumnIndex(NOME)));
                 cAux.setEmail(cursor.getString(cursor.getColumnIndex(EMAIL)));
                 cAux.setTelefone(cursor.getString(cursor.getColumnIndex(TELEFONE)));
+                cAux.setCidade(cursor.getString(cursor.getColumnIndex(CIDADE)));
                 cAux.setEstado(cursor.getString(cursor.getColumnIndex(ESTADO)));
             }
             //

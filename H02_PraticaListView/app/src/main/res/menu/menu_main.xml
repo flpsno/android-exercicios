@@ -4,8 +4,8 @@
     tools:context=".ui.TelaProdutos">
     <item
         android:id="@+id/action_incluir_contato"
-        app:showAsAction="always"
         android:icon="@android:drawable/ic_input_add"
         android:orderInCategory="100"
-        android:title="Incluir Contato" />
+        android:title="Incluir Contato"
+        app:showAsAction="always" />
 </menu>

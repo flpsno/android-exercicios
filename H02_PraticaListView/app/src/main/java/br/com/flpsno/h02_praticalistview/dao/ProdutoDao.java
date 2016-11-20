@@ -68,7 +68,7 @@ public class ProdutoDao extends Dao {
         fecharBanco();
     }
 
-    public void apagarProduto(Long idproduto) {
+    public void apagarProduto(long idproduto) {
         abrirBanco();
         //
         String filtro = IDPRODUTO + " = ? ";

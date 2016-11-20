@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +29,8 @@ import br.com.flpsno.h02_praticalistview.model.Produto;
 public class TelaEdicaoProduto extends AppCompatActivity {
 
     private Context context;
+    //
+    private Toolbar toolbar;
     //
     private EditText et_codigo;
     private EditText et_descricao;
@@ -45,10 +49,15 @@ public class TelaEdicaoProduto extends AppCompatActivity {
         //
         inicializarVariavel();
         inicializarAcao();
+        //
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void inicializarVariavel() {
         context = getBaseContext();
+        //
+        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
         //
         produtoDao = new ProdutoDao(context);
         //
@@ -118,8 +127,11 @@ public class TelaEdicaoProduto extends AppCompatActivity {
             bt_excluir.setVisibility(View.VISIBLE);
         }
 
-        exibirNotificacao("Edição de Produtos", "Produto " + pAux.getDescricao() + " salvo com sucesso!!!", (int) pAux.getIdproduto());
-//        exibirMensagem("Produto Salvo com Sucesso");
+        exibirNotificacao("Edição de Produtos",
+                "Produto " + pAux.getDescricao() + " salvo com sucesso!!!",
+                pAux.getIdproduto()
+        );
+        exibirMensagem("Produto Salvo com Sucesso");
     }
 
     private void exibirMensagem(String texto) {
@@ -177,11 +189,14 @@ public class TelaEdicaoProduto extends AppCompatActivity {
         alerta.show();
     }
 
-    private void exibirNotificacao(String titulo, String mensagem, int idnotificacao) {
+    private void exibirNotificacao(String titulo, String mensagem, long idproduto) {
         Intent mIntent = new Intent(
                 context,
-                MainActivity.class
+                TelaEdicaoProduto.class
         );
+        //
+        Log.d("TAG", String.valueOf(idproduto));
+        mIntent.putExtra(Constantes.PARAMETRO_ID, idproduto);
         //
         PendingIntent pi = PendingIntent.getActivity(
                 context,
@@ -210,12 +225,14 @@ public class TelaEdicaoProduto extends AppCompatActivity {
 
         if (versao >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             nm.notify(
-                    idnotificacao,
+//                    Constantes.ID_NOTIFICACAO_TELAEDICAOPRODUTOS,
+                    (int) idproduto,
                     notificacao.build()
             );
         } else {
             nm.notify(
-                    idnotificacao,
+//                    Constantes.ID_NOTIFICACAO_TELAEDICAOPRODUTOS,
+                    (int) idproduto,
                     notificacao.getNotification()
             );
         }

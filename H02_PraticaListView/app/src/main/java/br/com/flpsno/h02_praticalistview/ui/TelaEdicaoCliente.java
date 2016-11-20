@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -33,12 +34,15 @@ public class TelaEdicaoCliente extends AppCompatActivity {
 
     private Context context;
     //
+    private Toolbar toolbar;
+    //
     private ClienteDao clienteDao;
     //
     private EditText et_codigo;
     private EditText et_nome;
     private EditText et_email;
     private EditText et_telefone;
+    private EditText et_cidade;
     private Spinner sp_estado;
     //
     private Button bt_excluir;
@@ -55,10 +59,15 @@ public class TelaEdicaoCliente extends AppCompatActivity {
 
         inicializarVariavel();
         inicializarAcao();
+        //
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void inicializarVariavel() {
         context = getBaseContext();
+        //
+        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
         //
         clienteDao = new ClienteDao(context);
         //
@@ -66,6 +75,7 @@ public class TelaEdicaoCliente extends AppCompatActivity {
         et_nome = (EditText) findViewById(R.id.telaedicaocliente_et_nome);
         et_email = (EditText) findViewById(R.id.telaedicaocliente_et_email);
         et_telefone = (EditText) findViewById(R.id.telaedicaocliente_et_telefone);
+        et_cidade = (EditText) findViewById(R.id.telaedicaocliente_et_cidade);
         sp_estado = (Spinner) findViewById(R.id.telaedicaocliente_sp_estado);
         //
         bt_salvar = (Button) findViewById(R.id.telaedicaocliente_bt_salvar);
@@ -91,6 +101,7 @@ public class TelaEdicaoCliente extends AppCompatActivity {
             et_nome.setText(cAux.getNome());
             et_email.setText(cAux.getEmail());
             et_telefone.setText(cAux.getTelefone());
+            et_cidade.setText(cAux.getCidade());
             sp_estado.setSelection(descobrirPosicaoEstado(sp_estado, cAux.getEstado()));
             //
             bt_excluir.setVisibility(View.VISIBLE);
@@ -161,6 +172,7 @@ public class TelaEdicaoCliente extends AppCompatActivity {
         cAux.setNome(et_nome.getText().toString().trim());
         cAux.setEmail(et_email.getText().toString().trim());
         cAux.setTelefone(et_telefone.getText().toString());
+        cAux.setCidade(et_cidade.getText().toString());
         cAux.setEstado(sp_estado.getSelectedItem().toString());
         //
         if (idAtual != -1) {
@@ -179,15 +191,20 @@ public class TelaEdicaoCliente extends AppCompatActivity {
             bt_excluir.setVisibility(View.VISIBLE);
         }
 
-        exibirNotificacao("Edição de Clientes", "Cliente " + cAux.getNome() + " salvo com sucesso!!!", (int) cAux.getIdcliente());
-        //exibirMensagem("Produto Salvo com Sucesso");
+        exibirNotificacao("Edição de Clientes",
+                "Cliente " + cAux.getNome() + " salvo com sucesso!!!",
+                cAux.getIdcliente()
+        );
+        exibirMensagem("Cliente Salvo com Sucesso");
     }
 
-    private void exibirNotificacao(String titulo, String mensagem, int idnotificacao) {
+    private void exibirNotificacao(String titulo, String mensagem,Long idcliente) {
         Intent mIntent = new Intent(
                 context,
-                MainActivity.class
+                TelaEdicaoCliente.class
         );
+        //
+        mIntent.putExtra(Constantes.PARAMETRO_ID, idcliente);
         //
         PendingIntent pi = PendingIntent.getActivity(
                 context,
@@ -216,12 +233,12 @@ public class TelaEdicaoCliente extends AppCompatActivity {
 
         if (versao >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             nm.notify(
-                    idnotificacao,
+                    Constantes.ID_NOTIFICACAO_TELAEDICAOCLIENTES,
                     notificacao.build()
             );
         } else {
             nm.notify(
-                    idnotificacao,
+                    Constantes.ID_NOTIFICACAO_TELAEDICAOCLIENTES,
                     notificacao.getNotification()
             );
         }

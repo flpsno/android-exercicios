@@ -5,15 +5,30 @@ package br.com.flpsno.h02_praticalistview.banco;
  */
 public class Constantes {
 
+    // DATA BASE
     public static final String DATA_BASE = "banco.db3";
-    public static final int VERSAO = 4;
+    public static final int VERSAO = 7;
 
-    public static final String VALOR_IMAGEM_PRODUTO = "valor_imagem_produto";
-    public static final String VALOR_NOME_PRODUTO = "valor_nome_produto";
-    public static final String VALOR_QTD_MINIMA = "valor_qtd_minima";
-    public static final String VALOR_PRECO = "valor_preco";
 
+    // PARAMETROS
     public static final String PARAMETRO_ID = "parametro_id";
+
+
+    // NOTIFICAÇÃO
+    public static final int ID_NOTIFICACAO_TELAEDICAOCLIENTES = 10;
+    public static final int ID_NOTIFICACAO_TELAEDICAOPRODUTOS = 20;
+
+
+    // URL WB
+    public static final String WEB_WS_PEDIDO = "http://flpsno.com.br/restserver/index.php/api/pedido";
+
+
+    // PEDIDOS
+    public static final String STATUS_PEDIDO_OK = "O";
+    public static final String STATUS_PEDIDO_INSERIR = "I";
+    public static final String STATUS_PEDIDO_ATUALIZAR = "A";
+    public static final String STATUS_PEDIDO_DELETAR = "D";
+
 
 
     public static final String [] estados = {"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES",

@@ -2,15 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.flpsno.h02_praticalistview">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".ui.MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:label="DashBoard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,20 +24,36 @@
         </activity>
         <activity
             android:name=".ui.TelaClientes"
+            android:label="Lista de Clientes"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.TelaProdutos"
+            android:label="Lista de Produtos"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.TelaPedidos"
+            android:label="Lista de Pedidos"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".ui.TelaEdicaoProduto"
+            android:label="Edição de Produto"
             android:screenOrientation="portrait"></activity>
 
         <activity
             android:name=".ui.TelaEdicaoCliente"
+            android:label="Edição de Cliente"
             android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".ui.TelaEdicaoPedido"
+            android:label="Edição de Pedido"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".ui.TelaConfiguracoes"
+            android:label="Configurações"
+            android:screenOrientation="portrait"></activity>
+
     </application>
 
 </manifest>
