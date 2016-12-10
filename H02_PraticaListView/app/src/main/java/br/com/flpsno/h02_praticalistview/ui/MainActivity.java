@@ -1,6 +1,7 @@
 package br.com.flpsno.h02_praticalistview.ui;
 
 import android.app.ProgressDialog;
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -33,6 +34,7 @@ import br.com.flpsno.h02_praticalistview.banco.Constantes;
 import br.com.flpsno.h02_praticalistview.banco.HMAux;
 import br.com.flpsno.h02_praticalistview.dao.PedidoDao;
 import br.com.flpsno.h02_praticalistview.model.Pedido;
+import br.com.flpsno.h02_praticalistview.service.ServiceMain;
 import br.com.flpsno.h02_praticalistview.transmissao.Transmissao_Env;
 import br.com.flpsno.h02_praticalistview.transmissao.Transmissao_Rec;
 import br.com.flpsno.mylib.ToolBox;
@@ -42,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
     private static final long MENU_CLIENTES = 0L;
     private static final long MENU_PRODUTOS = 1L;
     private static final long MENU_PEDIDOS = 2L;
-    private static final long MENU_SINCRONISMO = 3L;
 
     private Context context;
     //
@@ -52,19 +53,12 @@ public class MainActivity extends AppCompatActivity {
     //
     private ProgressDialog progressDialog;
     //
-    private DrawerLayout mDrawerLayout;
-    private SimpleAdapter adapter_drawer;
-    private ArrayList<HMAux> opcoes;
-    private ActionBarDrawerToggle mDrawerToogle;
-    //
-    private ListView mDrawerList;
     //
     private Drawer result;
     //
     private PrimaryDrawerItem item_clientes;
     private PrimaryDrawerItem item_produtos;
     private PrimaryDrawerItem item_pedidos;
-    private SecondaryDrawerItem item_sincronismo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,10 +69,9 @@ public class MainActivity extends AppCompatActivity {
 
         inicializarVariavel();
         inicializarAcao();
-        //
-        //  mDrawerToogle.syncState();
 
-
+        Intent mIntent = new Intent(MainActivity.this, ServiceMain.class);
+        startService(mIntent);
     }
 
     private void inicializarVariavel() {
@@ -87,51 +80,6 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         //
-        mDrawerList = (ListView) findViewById(R.id.drawer_list);
-        //
-        gerarOpcoes();
-        //
-        String[] De = {HMAux.TEXTO_02};
-        int[] Para = {R.id.celuladrawer_opcao};
-       /* adapter_drawer = new SimpleAdapter(
-                context,
-                opcoes,
-                R.layout.celuladrawer,
-                De,
-                Para
-        );
-        mDrawerList.setAdapter(adapter_drawer);
-        //
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.telainicial_drawer);
-        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-        mDrawerToogle = new ActionBarDrawerToggle(
-                MainActivity.this,
-                mDrawerLayout,
-                R.string.drawer_aberto,
-                R.string.drawer_fechado
-        ) {
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                //
-                invalidateOptionsMenu();
-            }
-            //
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-                //
-                invalidateOptionsMenu();
-            }
-        };
-        //
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true); */
-        //
-        //   mDrawerLayout.setDrawerListener(mDrawerToogle);
-
-
         //if you want to update the items at a later time it is recommended to keep it in a variable
         item_clientes = new PrimaryDrawerItem()
                 .withIdentifier(MENU_CLIENTES)
@@ -145,12 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 .withIdentifier(MENU_PEDIDOS)
                 .withName("Pedidos")
                 .withIcon(R.mipmap.ic_launcher);
-        item_sincronismo = new SecondaryDrawerItem()
-                .withIdentifier(MENU_SINCRONISMO)
-                .withName("Sincronizar Pedidos")
-                .withIcon(R.mipmap.ic_launcher);
-
-//create the drawer and remember the `Drawer` result object
+        //create the drawer and remember the `Drawer` result object
         result = new DrawerBuilder()
                 .withActivity(this)
                 .withToolbar(toolbar)
@@ -158,9 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 .addDrawerItems(
                         item_clientes,
                         item_produtos,
-                        item_pedidos,
-                        new DividerDrawerItem(),
-                        item_sincronismo
+                        item_pedidos
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
 
@@ -184,43 +125,10 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(mIntentPedidos);
                         }
                         //
-                        if (drawerItem.getIdentifier() == MENU_SINCRONISMO) {
-                            new Sincronismo().execute();
-                        }
-
                         return true;
                     }
                 })
                 .build();
-
-        //
-        //result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(false);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
-
-    private void gerarOpcoes() {
-        opcoes = new ArrayList<>();
-        //
-        HMAux clientes = new HMAux();
-        clientes.put(HMAux.ID, "0");
-        clientes.put(HMAux.TEXTO_02, "Clientes");
-        opcoes.add(clientes);
-        //
-        HMAux produtos = new HMAux();
-        produtos.put(HMAux.ID, "1");
-        produtos.put(HMAux.TEXTO_02, "Produtos");
-        opcoes.add(produtos);
-        //
-        HMAux pedidos = new HMAux();
-        pedidos.put(HMAux.ID, "2");
-        pedidos.put(HMAux.TEXTO_02, "Pedidos");
-        opcoes.add(pedidos);
-        //
-        HMAux sincPedidos = new HMAux();
-        sincPedidos.put(HMAux.ID, "3");
-        sincPedidos.put(HMAux.TEXTO_02, "Sincronizar Pedidos");
-        opcoes.add(sincPedidos);
-
     }
 
     private void inicializarAcao() {
@@ -241,10 +149,6 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-   /*     if (mDrawerToogle.onOptionsItemSelected(item)) {
-            return true;
-        }*/
-
         //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_settings:
@@ -252,13 +156,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
             default:
                 break;
-        }
-
-        if (id == R.id.action_incluir_contato) {
-
-            //chamarDetalhes(-1L);
-
-            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -298,12 +195,15 @@ public class MainActivity extends AppCompatActivity {
                 //
                 Transmissao_Env env = new Transmissao_Env();
 
-                rec = gson.fromJson(
-                        ToolBox.comunicacao(
-                                Constantes.WEB_WS_PEDIDO,
-                                gson.toJson(env)
-                        ),
-                        Transmissao_Rec.class
+
+                String resposta = ToolBox.comunicacao(
+                        Constantes.WEB_WS_PEDIDO,
+                        gson.toJson(env)
+                );
+
+                String[] resp = resposta.split("#WSFLPSNO#");
+
+                rec = gson.fromJson(resp[1], Transmissao_Rec.class
                 );
                 //
                 ArrayList<Pedido> pedidos = rec.getPedidos();
@@ -377,12 +277,27 @@ public class MainActivity extends AppCompatActivity {
                     Intent mIntentPedidos = new Intent(MainActivity.this, TelaPedidos.class);
                     startActivity(mIntentPedidos);
                     break;
-                case 3:
-                    new Sincronismo().execute();
-                    break;
                 default:
                     break;
             }
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+    /*    Intent mIntent = new Intent(MainActivity.this, ServiceMain.class);
+        stopService(mIntent);*/
+
+        super.onDestroy();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

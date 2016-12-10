@@ -39,7 +39,36 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#64000000"/>
+        
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Credenciais no Servidor WS:"
+            android:textSize="15sp"/>
+        
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Usuário:"/>
 
+        <EditText
+            android:id="@+id/telaconfiguracoes_et_usuario_ws"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Senha:"/>
+
+        <EditText
+            android:id="@+id/telaconfiguracoes_et_senha_ws"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
 
         <Button
             android:id="@+id/telaconfiguracoes_btn_salvar"

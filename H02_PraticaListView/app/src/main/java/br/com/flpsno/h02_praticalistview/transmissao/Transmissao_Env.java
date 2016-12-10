@@ -9,13 +9,22 @@ import br.com.flpsno.h02_praticalistview.model.Pedido;
  */
 public class Transmissao_Env {
 
-    private ArrayList<Pedido> pedidos;
+    private String usuario;
+    private String senha;
 
-    public ArrayList<Pedido> getContatos() {
-        return pedidos;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setContatos(ArrayList<Pedido> pedidos) {
-        this.pedidos = pedidos;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }

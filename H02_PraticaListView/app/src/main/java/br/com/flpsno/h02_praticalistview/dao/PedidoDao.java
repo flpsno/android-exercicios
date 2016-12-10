@@ -253,4 +253,41 @@ public class PedidoDao extends Dao {
         //
         return pedidos;
     }
+
+    public void inserirListaPedidos(ArrayList<Pedido> pedidos){
+        abrirBanco();
+        //
+        db.beginTransaction();
+        //
+        try {
+            db.delete(TABELA, null, null);
+
+            ContentValues cv = new ContentValues();
+
+            for (Pedido pAux : pedidos){
+                cv.clear();
+                //
+                cv.put(IDPEDIDO, pAux.getIDPEDIDO());
+                cv.put(PEDIDO_ELO7, pAux.getPEDIDO_ELO7());
+                cv.put(STATUS_ELO7, pAux.getSTATUS_ELO7());
+                cv.put(DATA_PEDIDO, pAux.getDATA_PEDIDO());
+                cv.put(VALOR_TOTAL, pAux.getVALOR_TOTAL());
+                cv.put(VALOR_FRETE, pAux.getVALOR_FRETE());
+                cv.put(TIPO_FRETE, pAux.getTIPO_FRETE());
+                cv.put(COMPRADOR, pAux.getCOMPRADOR());
+                cv.put(DATA_PEDIDO2, pAux.getDATA_PEDIDO2());
+                cv.put(STATUS, Constantes.STATUS_PEDIDO_INSERIR);
+                //
+                db.insert(TABELA, null, cv);
+            }
+
+            db.setTransactionSuccessful();
+
+        } catch (Exception e){
+        } finally {
+            db.endTransaction();
+        }
+        //
+        fecharBanco();
+    }
 }

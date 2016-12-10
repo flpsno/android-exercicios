@@ -1,5 +1,7 @@
 package br.com.flpsno.h02_praticalistview.model;
 
+import java.util.ArrayList;
+
 import br.com.flpsno.h02_praticalistview.banco.Constantes;
 
 /**
@@ -17,9 +19,11 @@ public class Pedido {
     private String TIPO_FRETE;
     private String COMPRADOR;
     private String STATUS;
+    private StatusPedido STATUS_PEDIDO;
+    private ArrayList<Item> items;
 
     public Pedido() {
-        this.IDPEDIDO = -1;
+        this.IDPEDIDO = -1L;
         this.PEDIDO_ELO7 = "SEM PEDIDO";
         this.STATUS_ELO7 = "SEM STATUS";
         this.DATA_PEDIDO = "SEM DATA";
@@ -28,6 +32,36 @@ public class Pedido {
         this.TIPO_FRETE = "SEM TIPO FRETE";
         this.COMPRADOR = "SEM COMPRADOR";
         this.STATUS = Constantes.STATUS_PEDIDO_OK;
+    }
+
+    public Pedido(Long IDPEDIDO, String PEDIDO_ELO7, String STATUS_ELO7, String DATA_PEDIDO, Double VALOR_TOTAL,
+                  Double VALOR_FRETE, String TIPO_FRETE, String COMPRADOR, String STATUS, StatusPedido STATUS_PEDIDO) {
+        this.IDPEDIDO = IDPEDIDO;
+        this.PEDIDO_ELO7 = PEDIDO_ELO7;
+        this.STATUS_ELO7 = STATUS_ELO7;
+        this.DATA_PEDIDO = DATA_PEDIDO;
+        this.VALOR_TOTAL = VALOR_TOTAL;
+        this.VALOR_FRETE = VALOR_FRETE;
+        this.TIPO_FRETE = TIPO_FRETE;
+        this.COMPRADOR = COMPRADOR;
+        this.STATUS = STATUS;
+        this.STATUS_PEDIDO = STATUS_PEDIDO;
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
+    }
+
+    public StatusPedido getSTATUS_PEDIDO() {
+        return STATUS_PEDIDO;
+    }
+
+    public void setSTATUS_PEDIDO(StatusPedido STATUS_PEDIDO) {
+        this.STATUS_PEDIDO = STATUS_PEDIDO;
     }
 
     private String DATA_PEDIDO2;
@@ -58,19 +92,6 @@ public class Pedido {
 
     public void setCOMPRADOR(String COMPRADOR) {
         this.COMPRADOR = COMPRADOR;
-    }
-
-    public Pedido(Long IDPEDIDO, String PEDIDO_ELO7, String STATUS_ELO7, String DATA_PEDIDO, Double VALOR_TOTAL,
-                  Double VALOR_FRETE, String TIPO_FRETE, String COMPRADOR, String STATUS) {
-        this.IDPEDIDO = IDPEDIDO;
-        this.PEDIDO_ELO7 = PEDIDO_ELO7;
-        this.STATUS_ELO7 = STATUS_ELO7;
-        this.DATA_PEDIDO = DATA_PEDIDO;
-        this.VALOR_TOTAL = VALOR_TOTAL;
-        this.VALOR_FRETE = VALOR_FRETE;
-        this.TIPO_FRETE = TIPO_FRETE;
-        this.COMPRADOR = COMPRADOR;
-        this.STATUS = STATUS;
     }
 
     public long getIDPEDIDO() {

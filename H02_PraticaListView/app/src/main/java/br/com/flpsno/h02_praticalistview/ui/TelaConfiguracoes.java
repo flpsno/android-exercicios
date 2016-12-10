@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import br.com.flpsno.h02_praticalistview.R;
@@ -28,6 +29,8 @@ public class TelaConfiguracoes extends AppCompatActivity {
     private Toolbar toolbar;
     //
     private CheckBox cb_somente_wifi;
+    private EditText et_usuario_ws;
+    private EditText et_senha_ws;
     private Button btn_salvar;
     //
     private ConfiguracaoDao configuracaoDao;
@@ -50,12 +53,16 @@ public class TelaConfiguracoes extends AppCompatActivity {
         setSupportActionBar(toolbar);
         //
         cb_somente_wifi = (CheckBox) findViewById(R.id.telaconfiguracoes_cb_somente_wifi);
+        et_usuario_ws = (EditText) findViewById(R.id.telaconfiguracoes_et_usuario_ws);
+        et_senha_ws = (EditText) findViewById(R.id.telaconfiguracoes_et_senha_ws);
         btn_salvar = (Button) findViewById(R.id.telaconfiguracoes_btn_salvar);
         //
         configuracaoDao = new ConfiguracaoDao(context);
         //
         Configuracao config = configuracaoDao.obterConfiguracao();
         cb_somente_wifi.setChecked(config.isSOMENTE_WIFI());
+        et_usuario_ws.setText(config.getUSUARIO_WS());
+        et_senha_ws.setText(config.getSENHA_WS());
     }
 
     private void iniciarAcao() {
@@ -71,6 +78,8 @@ public class TelaConfiguracoes extends AppCompatActivity {
         Configuracao cAux = new Configuracao();
         //
         cAux.setSOMENTE_WIFI(cb_somente_wifi.isChecked());
+        cAux.setUSUARIO_WS(et_usuario_ws.getText().toString());
+        cAux.setSENHA_WS(et_senha_ws.getText().toString());
         //
         configuracaoDao.atualizaConfiguracao(cAux);
         //

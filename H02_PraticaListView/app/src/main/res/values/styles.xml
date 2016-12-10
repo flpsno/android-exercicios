@@ -1,11 +1,22 @@
 <resources>
 
+
+    <!-- inherit from the material theme -->
+    <!--    <style name="AppTheme" parent="android:Theme.Material.Light.NoActionBar"> -->
+    <!-- Main theme colors -->
+    <!--   your app branding color for the app bar -->
+    <!--    <item name="android:colorPrimary">@color/primary</item> -->
+    <!--   darker variant for the status bar and contextual app bars -->
+    <!--    <item name="android:colorPrimaryDark">@color/primary_dark</item> -->
+    <!--   theme UI controls like checkboxes and text fields -->
+    <!--    <item name="android:colorAccent">@color/accent</item> -->
+    <!--    </style> -->
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-      <!--  <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item> -->
+        <!--  <item name="colorPrimary">@color/colorPrimary</item>
+          <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+          <item name="colorAccent">@color/colorAccent</item> -->
     </style>
 
     <style name="CustomTheme" parent="MaterialDrawerTheme">
@@ -23,7 +34,9 @@
         <item name="material_drawer_divider">@color/material_drawer_divider</item>
         <item name="material_drawer_selected">@color/material_drawer_selected</item>
         <item name="material_drawer_selected_text">@color/material_drawer_selected_text</item>
-        <item name="material_drawer_header_selection_text">@color/material_drawer_header_selection_text</item>
+        <item name="material_drawer_header_selection_text">
+            @color/material_drawer_header_selection_text
+        </item>
     </style>
 
 </resources>

@@ -33,27 +33,31 @@
         <activity
             android:name=".ui.TelaPedidos"
             android:label="Lista de Pedidos"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.TelaEdicaoProduto"
             android:label="Edição de Produto"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".ui.TelaEdicaoCliente"
             android:label="Edição de Cliente"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".ui.TelaEdicaoPedido"
             android:label="Edição de Pedido"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".ui.TelaConfiguracoes"
             android:label="Configurações"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
 
+        <service android:name=".service.ServiceMain"/>
+
+
+        <receiver android:name=".AlarmeAcao"/>
     </application>
 
 </manifest>
