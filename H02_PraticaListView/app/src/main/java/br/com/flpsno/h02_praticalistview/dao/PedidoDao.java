@@ -178,10 +178,10 @@ public class PedidoDao extends Dao {
             arrParam.add("%" + comprador + "%");
         }
         //
-       /* if (!status.trim().isEmpty()) {
+        if (!status.trim().isEmpty()) {
             filtro += " and " + STATUS_ELO7 + " = ? ";
             arrParam.add(status);
-        }*/
+        }
 
         String[] parametros =  new String[arrParam.size()];
         for (int i = 0; i < arrParam.size(); i++) {

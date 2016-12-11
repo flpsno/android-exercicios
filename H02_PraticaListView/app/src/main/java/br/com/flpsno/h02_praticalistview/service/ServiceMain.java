@@ -19,6 +19,7 @@ import br.com.flpsno.h02_praticalistview.R;
 import br.com.flpsno.h02_praticalistview.banco.Constantes;
 import br.com.flpsno.h02_praticalistview.dao.ConfiguracaoDao;
 import br.com.flpsno.h02_praticalistview.dao.PedidoDao;
+import br.com.flpsno.h02_praticalistview.dao.StatusPedidoDao;
 import br.com.flpsno.h02_praticalistview.model.Configuracao;
 import br.com.flpsno.h02_praticalistview.transmissao.Transmissao_Env;
 import br.com.flpsno.h02_praticalistview.transmissao.Transmissao_Rec;
@@ -77,6 +78,12 @@ public class ServiceMain extends IntentService {
                         //
                         pedidoDao.inserirListaPedidos(rec.getPedidos());
                         //
+                        // status pedido
+                        //
+                        StatusPedidoDao statusPedidoDao = new StatusPedidoDao(getApplicationContext());
+                        //
+                        statusPedidoDao.inserirListaStatusPedido(rec.getStatusPedidos());
+
                         mensagem = "Sincronismo Realizado com Sucesso!!!";
                     } else {
                         mensagem = "Erro: " + par[1];
@@ -93,26 +100,48 @@ public class ServiceMain extends IntentService {
             notificacao();
         }
 
+        /*try {
+            Gson gson = new Gson();
+            //
+            Transmissao_Env env = new Transmissao_Env();
+            env.setUsuario(config.getUSUARIO_WS());
+            env.setSenha(ToolBox.md5(config.getSENHA_WS()));
+            //
+            String resultado = ToolBox.comunicacao(
+                    Constantes.WEB_WS_STATUSPEDIDO,
+                    gson.toJson(env)
+            );
+            //
+            String par[] = resultado.split("#WSFLPSNO#");
+            //
+            switch (par.length) {
+                case 2:
+                    if (par[0].equals("0")) {
+                        Transmissao_Rec rec = gson.fromJson(
+                                par[1],
+                                Transmissao_Rec.class
+                        );
+                        //
+                        StatusPedidoDao statusPedidoDao = new StatusPedidoDao(getApplicationContext());
+                        //
+                        statusPedidoDao.inserirListaStatusPedido(rec.getStatusPedidos());
+                        //
+                        mensagem = "Sincronismo Realizado com Sucesso!!!";
+                    } else {
+                        mensagem = "Erro: " + par[1];
+                    }
+                    break;
+                default:
+                    mensagem = "Erro: " + par[0];
+                    break;
+            }
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            notificacao();
+        }*/
 
-        /*Intent mIntent = new Intent(context, AlarmeAcao.class);
-        //
-        pi = PendingIntent.getBroadcast(
-                context,
-                0,
-                mIntent,
-                0
-        );
-        //
-        AlarmManager am =
-                (AlarmManager) context.getSystemService(ALARM_SERVICE);
-        //
-        am.setRepeating(
-                AlarmManager.RTC_WAKEUP,
-                System.currentTimeMillis() + (30 * 1000),
-                (5 * 1000),
-                pi
-        );*/
     }
 
     private void iniciarVariavel() {

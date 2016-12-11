@@ -25,6 +25,8 @@ import br.com.flpsno.h02_praticalistview.adapter.Adapter_Pedidos;
 import br.com.flpsno.h02_praticalistview.banco.Constantes;
 import br.com.flpsno.h02_praticalistview.banco.HMAux;
 import br.com.flpsno.h02_praticalistview.dao.PedidoDao;
+import br.com.flpsno.h02_praticalistview.dao.StatusPedidoDao;
+import br.com.flpsno.h02_praticalistview.model.StatusPedido;
 
 public class TelaPedidos extends AppCompatActivity {
 
@@ -53,23 +55,6 @@ public class TelaPedidos extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
-
-/*
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        View view = inflater.inflate(
-                R.layout.telapedidos,
-                container,
-                false
-        );
-        //
-        inicializarVariavel(view);
-        inicializarAcao();
-        //
-        return view;
-    }*/
 
     private void inicializarVariavel() {
         context = getBaseContext();
@@ -191,10 +176,15 @@ public class TelaPedidos extends AppCompatActivity {
     private ArrayList<String> gerarStatus() {
         ArrayList<String> status = new ArrayList<>();
         //
-        status.add("Aguardando Frete");
-        status.add("Aguardando Pagamento");
-        status.add("Pago");
-        status.add("Finalizado");
+        StatusPedidoDao statusPedidoDao = new StatusPedidoDao(context);
+        ArrayList<StatusPedido> statusPedidos = statusPedidoDao.obterStatusPedido();
+        //
+        for (int i = 0; i < statusPedidos.size(); i++) {
+            StatusPedido spAux = new StatusPedido();
+            spAux = statusPedidos.get(i);
+
+            status.add(spAux.getDESCRICAO());
+        }
         //
         return status;
     }

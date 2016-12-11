@@ -6,28 +6,28 @@ package br.com.flpsno.h02_praticalistview.model;
 
 public class StatusPedido {
 
-    private Long IDSATTUSPEDIDO;
+    private Long IDSTATUSPEDIDO;
     private String CODIGO;
     private String DESCRICAO;
 
     public StatusPedido(Long IDSATTUSPEDIDO, String CODIGO, String DESCRICAO) {
-        this.IDSATTUSPEDIDO = IDSATTUSPEDIDO;
+        this.IDSTATUSPEDIDO = IDSATTUSPEDIDO;
         this.CODIGO = CODIGO;
         this.DESCRICAO = DESCRICAO;
     }
 
     public StatusPedido() {
-        this.IDSATTUSPEDIDO = -1L;
+        this.IDSTATUSPEDIDO = -1L;
         this.CODIGO = "Sem Código";
         this.DESCRICAO = "Sem Descrição";
     }
 
-    public Long getIDSATTUSPEDIDO() {
-        return IDSATTUSPEDIDO;
+    public Long getIDSTATUSPEDIDO() {
+        return IDSTATUSPEDIDO;
     }
 
-    public void setIDSATTUSPEDIDO(Long IDSATTUSPEDIDO) {
-        this.IDSATTUSPEDIDO = IDSATTUSPEDIDO;
+    public void setIDSTATUSPEDIDO(Long IDSTATUSPEDIDO) {
+        this.IDSTATUSPEDIDO = IDSTATUSPEDIDO;
     }
 
     public String getCODIGO() {

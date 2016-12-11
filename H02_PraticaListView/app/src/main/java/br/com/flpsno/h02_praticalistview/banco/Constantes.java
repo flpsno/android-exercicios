@@ -7,7 +7,7 @@ public class Constantes {
 
     // DATA BASE
     public static final String DATA_BASE = "banco.db3";
-    public static final int VERSAO = 7;
+    public static final int VERSAO = 8;
 
 
     // PARAMETROS
@@ -21,7 +21,6 @@ public class Constantes {
 
     // URL WB
     public static final String WEB_WS_PEDIDO = "http://flpsno.com.br/restserver/index.php/api/pedido";
-
 
     // PEDIDOS
     public static final String STATUS_PEDIDO_OK = "O";

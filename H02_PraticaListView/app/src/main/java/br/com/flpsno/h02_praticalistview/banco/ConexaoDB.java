@@ -50,6 +50,13 @@ public class ConexaoDB extends SQLiteOpenHelper {
                 "    STATUS TEXT         NOT NULL\n" +
                 ");");
         //
+        sb.append("CREATE TABLE if not exists statuspedido (\n" +
+                "    IDSTATUSPEDIDO     BIGINT PRIMARY KEY\n" +
+                "                        NOT NULL,\n" +
+                "    CODIGO     TEXT   NOT NULL,\n" +
+                "    DESCRICAO  TEXT   NOT NULL\n" +
+                ");");
+
 
         String [] comandos = sb.toString().split(";");
         //
@@ -66,6 +73,7 @@ public class ConexaoDB extends SQLiteOpenHelper {
         sb.append("DROP TABLE IF EXISTS produtos;");
         sb.append("DROP TABLE IF EXISTS clientes;");
         sb.append("DROP TABLE IF EXISTS pedidos;");
+        sb.append("DROP TABLE IF EXISTS statuspedido;");
         //
         String [] comandos = sb.toString().split(";");
         //

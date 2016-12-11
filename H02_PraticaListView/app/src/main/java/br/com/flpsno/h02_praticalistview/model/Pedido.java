@@ -20,7 +20,6 @@ public class Pedido {
     private String COMPRADOR;
     private String STATUS;
     private StatusPedido STATUS_PEDIDO;
-    private ArrayList<Item> items;
 
     public Pedido() {
         this.IDPEDIDO = -1L;
@@ -46,14 +45,6 @@ public class Pedido {
         this.COMPRADOR = COMPRADOR;
         this.STATUS = STATUS;
         this.STATUS_PEDIDO = STATUS_PEDIDO;
-    }
-
-    public ArrayList<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(ArrayList<Item> items) {
-        this.items = items;
     }
 
     public StatusPedido getSTATUS_PEDIDO() {
